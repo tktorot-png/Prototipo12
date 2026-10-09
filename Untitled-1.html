@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Alerta Vecinal Segura SJL</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #eef3f8;
+    text-align: center;
+    margin: 0;
+    padding: 30px;
+}
+
+.app {
+    background: white;
+    max-width: 380px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px #ccc;
+}
+
+h1 {
+    color: #17365d;
+    font-size: 24px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #2463a6;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.emergencia {
+    background: #d62828;
+}
+
+input, select, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.pantalla {
+    display: none;
+}
+
+.activa {
+    display: block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <h1>🛡️ Alerta Vecinal Segura SJL</h1>
+    <p>Tu seguridad, nuestra prioridad</p>
+
+    <!-- PANTALLA DE INICIO -->
+
+    <div id="inicio" class="pantalla activa">
+
+        <h2>Menú principal</h2>
+
+        <button class="emergencia"
+        onclick="mostrar('alerta')">
+        🚨 Enviar alerta
+        </button>
+
+        <button onclick="mostrar('reporte')">
+        📍 Reportar zona insegura
+        </button>
+
+        <button onclick="mostrar('notificaciones')">
+        🔔 Notificaciones
+        </button>
+
+    </div>
+
+    <!-- PANTALLA DE EMERGENCIA -->
+
+    <div id="alerta" class="pantalla">
+
+        <h2>🚨 Alerta de emergencia</h2>
+
+        <p>¿Deseas activar una alerta?</p>
+
+        <button class="emergencia"
+        onclick="simularAlerta()">
+        Confirmar alerta
+        </button>
+
+        <button onclick="mostrar('inicio')">
+        Volver
+        </button>
+
+    </div>
+
+    <!-- PANTALLA DE REPORTES -->
+
+    <div id="reporte" class="pantalla">
+
+        <h2>📍 Reportar zona insegura</h2>
+
+        <input id="ubicacion"
+        placeholder="Escribe la ubicación">
+
+        <select id="problema">
+            <option>Falta de iluminación</option>
+            <option>Falta de vigilancia</option>
+            <option>Zona con robos reportados</option>
+            <option>Otro problema</option>
+        </select>
+
+        <textarea id="descripcion"
+        placeholder="Describe la situación"></textarea>
+
+        <button onclick="enviarReporte()">
+        Enviar reporte
+        </button>
+
+        <button onclick="mostrar('inicio')">
+        Volver
+        </button>
+
+    </div>
+
+    <!-- PANTALLA DE NOTIFICACIONES -->
+
+    <div id="notificaciones" class="pantalla">
+
+        <h2>🔔 Notificaciones</h2>
+
+        <p>⚠️ Ejemplo: Calle con poca iluminación.</p>
+
+        <p>⚠️ Ejemplo: Zona que necesita vigilancia.</p>
+
+        <button onclick="mostrar('inicio')">
+        Volver
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+function mostrar(id) {
+
+    document.querySelectorAll('.pantalla')
+    .forEach(p => p.classList.remove('activa'));
+
+    document.getElementById(id)
+    .classList.add('activa');
+
+}
+
+function simularAlerta() {
+
+    alert(
+    "SIMULACIÓN: Alerta registrada en el prototipo. " +
+    "No se ha contactado a ninguna autoridad."
+    );
+
+}
+
+function enviarReporte() {
+
+    let ubicacion =
+    document.getElementById("ubicacion").value.trim();
+
+    if (ubicacion === "") {
+        alert("Por favor, ingresa una ubicación.");
+        return;
+    }
+
+    alert(
+    "SIMULACIÓN: Reporte registrado correctamente. " +
+    "No se ha enviado a ningún servicio externo."
+    );
+
+    mostrar('inicio');
+
+}
+
+</script>
+
+</body>
+</html>
